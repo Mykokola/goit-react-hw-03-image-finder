@@ -10,19 +10,23 @@ export class App extends React.Component  {
   }
   async componentDidUpdate(prevProps,prevState){
     try{
-    this.setState({isloader:true})
   if(this.state.searchImg !== prevState.searchImg){
+    this.setState({isloader:true})
+    console.log(this.state.isloader)
     const articles = await fetchImgj(this.state.searchImg);
      this.setState({imgApiMass:articles.data.hits})
     }
     if(this.state.page !== prevState.page){
+      this.setState({isloader:true})
+      console.log(this.state.isloader)
       const articles = await fetchImgj(this.state.searchImg,this.state.page);
       this.setState({imgApiMass:[...this.state.imgApiMass,...articles.data.hits]})
     }
     }catch{
-      alert('Eror')
     }finally{
-      this.setState({isloader:false})
+      if(this.state.isloader){
+        this.setState({isloader:false})
+      }
     }
   }
 
