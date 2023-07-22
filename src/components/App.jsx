@@ -41,11 +41,11 @@ export class App extends React.Component {
   lodaMoreImg = e => {
     e.preventDefault();
     const { page } = this.state;
-    this.setState({ page: page + 1 });
+   this.setState({ page: page + 1 });
   };
 
   render() {
-    const { imgApiMass, isloader } = this.state;
+    const { imgApiMass, isloader,page } = this.state;
     return (
       <>
         {/* SEARCH-BAR */}
@@ -54,9 +54,9 @@ export class App extends React.Component {
         {/* ImageGallery */}
         <ImageGallery imgApiMass={imgApiMass}></ImageGallery>
         {/* ImageGallery */}
-        {/* LOADMore */}
+        {/* LOADMore */} 
         <Loader isloader={isloader}></Loader>
-        {imgApiMass.length ? <ButtonLoadMore loadMore={this.lodaMoreImg}></ButtonLoadMore>: null}
+        {(12*page) === imgApiMass.length ? <ButtonLoadMore loadMore={this.lodaMoreImg}></ButtonLoadMore>: null}
         {/* LOADMore */}
         {/* MODAL */}
         {/* MODAL */}
