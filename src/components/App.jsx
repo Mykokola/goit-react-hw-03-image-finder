@@ -34,8 +34,8 @@ export class App extends React.Component {
   }
 
   SubmitSearch = e => {
-    e.preventDefault();
-    this.setState({ searchImg: e.target.lastChild.value });
+    console.log(e)
+    this.setState({ searchImg: e});
   };
 
   lodaMoreImg = e => {
@@ -49,7 +49,7 @@ export class App extends React.Component {
     return (
       <>
         {/* SEARCH-BAR */}
-        <Searchbar SubmitSearch={this.SubmitSearch}></Searchbar>
+        <Searchbar onSubmit={this.SubmitSearch}></Searchbar>
         {/* SEARCH-BAR */}
         {/* ImageGallery */}
         <ImageGallery imgApiMass={imgApiMass}></ImageGallery>
